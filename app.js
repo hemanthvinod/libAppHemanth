@@ -5,6 +5,7 @@ const userData = require("./src/model/userdata");
 const bookData = require("./src/model/bookdata");
 const path = require("path");
 
+const PORT = process.env.PORT || 3000;
 const jwt = require("jsonwebtoken");
 const app = new express();
 app.use(cors());
@@ -133,6 +134,14 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname + "/dist/frontend/index.html"));
 });
 
-app.listen(3000 || process.env.PORT, () => {
-  console.log(`listening to port `);
+// app.listen(3000 || process.env.PORT, () => {
+//   console.log(`listening to port 3000 `);
+// });
+
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname + "/dist/frontend/index.html"));
+// });
+
+app.listen(PORT, function () {
+  console.log(`listening to port ${PORT}`);
 });
